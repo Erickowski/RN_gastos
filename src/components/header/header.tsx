@@ -1,5 +1,11 @@
-import { Text } from "react-native";
+import { Text, SafeAreaView } from "react-native";
+
+import styles from "./styles";
 
 export const Header = () => {
-  return <Text>Header</Text>;
+  return (
+    <SafeAreaView style={styles.header}>
+      <Text style={styles.text}>Planificador de gastos</Text>
+    </SafeAreaView>
+  );
 };
