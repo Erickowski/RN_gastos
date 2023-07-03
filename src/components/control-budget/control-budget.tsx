@@ -18,17 +18,19 @@ export const ControlBudget = ({ budgetValue }: Props) => {
         />
       </View>
 
-      <View>
-        <Text>
-          <Text>Presupuesto:</Text> {formatNumber(budgetValue)}
+      <View style={styles.textContainer}>
+        <Text style={styles.value}>
+          <Text style={styles.label}>Presupuesto:</Text>{" "}
+          {formatNumber(budgetValue)}
         </Text>
 
-        <Text>
-          <Text>Disponible:</Text> {formatNumber(budgetValue)}
+        <Text style={styles.value}>
+          <Text style={styles.label}>Disponible:</Text>{" "}
+          {formatNumber(budgetValue)}
         </Text>
 
-        <Text>
-          <Text>Gastado:</Text> {formatNumber(budgetValue)}
+        <Text style={styles.value}>
+          <Text style={styles.label}>Gastado:</Text> {formatNumber(budgetValue)}
         </Text>
       </View>
     </View>

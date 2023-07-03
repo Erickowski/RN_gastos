@@ -11,6 +11,18 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
   },
+  textContainer: {
+    marginTop: 50,
+  },
+  value: {
+    fontSize: 24,
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  label: {
+    fontWeight: "700",
+    color: "#3B82F6",
+  },
 });
 
 export default styles;
