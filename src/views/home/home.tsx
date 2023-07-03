@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { View, Alert } from "react-native";
 
-import { Header, NewBudget } from "@src/components";
+import { Header, NewBudget, ControlBudget } from "@src/components";
 
 import styles from "./styles";
 
 export function Home() {
+  const [showControlBudget, setShowControlBudget] = useState<boolean>(false);
+
   const handleSetBudget = (budget: string) => {
     if (Number(budget) > 0) {
-      console.log(budget);
+      setShowControlBudget(true);
     } else {
       Alert.alert("Error", "El presupuesto no puede ser 0 o menor");
     }
@@ -17,7 +20,11 @@ export function Home() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Header />
-        <NewBudget onSetBudget={handleSetBudget} />
+        {showControlBudget ? (
+          <ControlBudget />
+        ) : (
+          <NewBudget onSetBudget={handleSetBudget} />
+        )}
       </View>
     </View>
   );
