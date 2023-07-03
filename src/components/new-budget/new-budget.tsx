@@ -5,11 +5,16 @@ import styles from "./styles";
 export const NewBudget = () => {
   return (
     <View style={styles.container}>
-      <Text>Nuevo presupuesto</Text>
-      <TextInput />
+      <Text style={styles.label}>Nuevo presupuesto</Text>
 
-      <Pressable>
-        <Text>Definir presupuesto</Text>
+      <TextInput
+        keyboardType="numeric"
+        placeholder="Agrega tu presupuesto: Ej. 300"
+        style={styles.input}
+      />
+
+      <Pressable style={styles.button}>
+        <Text style={styles.textButton}>Agregar presupuesto</Text>
       </Pressable>
     </View>
   );
