@@ -8,6 +8,13 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: "#3B82F6",
   },
+  image: {
+    width: 60,
+    height: 60,
+    position: "absolute",
+    top: 220,
+    right: 20,
+  },
 });
 
 export default styles;

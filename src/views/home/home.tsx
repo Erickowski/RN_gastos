@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Alert } from "react-native";
+import { View, Alert, Pressable, Image } from "react-native";
 
 import { BillType } from "@src/types";
 import { Header, NewBudget, ControlBudget } from "@src/components";
@@ -46,6 +46,15 @@ export function Home() {
           />
         )}
       </View>
+
+      {showControlBudget ? (
+        <Pressable>
+          <Image
+            source={require("@src/assets/img/nuevo-gasto.png")}
+            style={styles.image}
+          />
+        </Pressable>
+      ) : null}
     </View>
   );
 }
