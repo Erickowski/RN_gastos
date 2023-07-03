@@ -6,9 +6,10 @@ import { Header, NewBudget, ControlBudget } from "@src/components";
 import styles from "./styles";
 
 export function Home() {
+  const [budget, setBudget] = useState<string>("");
   const [showControlBudget, setShowControlBudget] = useState<boolean>(false);
 
-  const handleSetBudget = (budget: string) => {
+  const handleValidateBudget = () => {
     if (Number(budget) > 0) {
       setShowControlBudget(true);
     } else {
@@ -21,9 +22,13 @@ export function Home() {
       <View style={styles.header}>
         <Header />
         {showControlBudget ? (
-          <ControlBudget />
+          <ControlBudget budgetValue={budget} />
         ) : (
-          <NewBudget onSetBudget={handleSetBudget} />
+          <NewBudget
+            budgetValue={budget}
+            onSetBudget={setBudget}
+            onValidateBudget={handleValidateBudget}
+          />
         )}
       </View>
     </View>
