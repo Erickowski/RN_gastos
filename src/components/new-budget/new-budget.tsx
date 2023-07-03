@@ -1,10 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
 import { Text, Pressable, View, TextInput } from "react-native";
 
 import styles from "./styles";
 
 type Props = {
   budgetValue: string;
-  onSetBudget: () => void;
+  onSetBudget: Dispatch<SetStateAction<string>>;
   onValidateBudget: () => void;
 };
 
