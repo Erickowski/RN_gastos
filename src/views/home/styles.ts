@@ -1,12 +1,14 @@
 import { StyleSheet } from "react-native";
 
+import { COLORS } from "@src/styles";
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F5F5F5",
+    backgroundColor: COLORS.cultured,
     flex: 1,
   },
   header: {
-    backgroundColor: "#3B82F6",
+    backgroundColor: COLORS.blueberry,
   },
   image: {
     width: 60,

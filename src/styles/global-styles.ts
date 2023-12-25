@@ -1,12 +1,14 @@
+import { COLORS } from "./colors";
+
 export const GLOBAL_STYLES = {
   container: {
-    backgroundColor: "#FFF",
+    backgroundColor: COLORS.white,
     marginHorizontal: 10,
     borderRadius: 10,
     paddingVertical: 40,
     paddingHorizontal: 20,
     transform: [{ translateY: 50 }],
-    shadowColor: "#000",
+    shadowColor: COLORS.black,
     shadowOffset: {
       width: 0,
       height: 2,

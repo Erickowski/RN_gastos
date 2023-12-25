@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
-import { GLOBAL_STYLES } from "@src/styles";
+import { GLOBAL_STYLES, COLORS } from "@src/styles";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#1E40AF",
+    backgroundColor: COLORS.denimBlue,
     flex: 1,
   },
   form: {
@@ -14,31 +14,31 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 28,
     marginBottom: 30,
-    color: "#64748B",
+    color: COLORS.slateGray,
   },
   label: {
     marginVertical: 10,
   },
   labelText: {
-    color: "#64748B",
+    color: COLORS.slateGray,
     textTransform: "uppercase",
     fontSize: 16,
     fontWeight: "bold",
   },
   input: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: COLORS.cultured,
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
   },
   submitButton: {
-    backgroundColor: "#3b82f6",
+    backgroundColor: COLORS.blueberry,
     padding: 10,
     marginTop: 20,
   },
   submitText: {
     textAlign: "center",
-    color: "#FFF",
+    color: COLORS.white,
     fontWeight: "bold",
     textTransform: "uppercase",
   },

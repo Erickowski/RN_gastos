@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { GLOBAL_STYLES } from "@src/styles";
+import { GLOBAL_STYLES, COLORS } from "@src/styles";
 
 const styles = StyleSheet.create({
   container: GLOBAL_STYLES.container,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: "700",
-    color: "#3B82F6",
+    color: COLORS.blueberry,
   },
 });
 
