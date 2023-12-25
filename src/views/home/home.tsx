@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, Alert, Pressable, Image } from "react-native";
 
+import { generateId } from "@src/utils";
 import { BillType, NewBillType } from "@src/types";
 import {
   Header,
@@ -15,20 +16,7 @@ export function Home() {
   const [budget, setBudget] = useState<string>("");
   const [showControlBudget, setShowControlBudget] = useState<boolean>(false);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
-  const [bills, setBills] = useState<BillType>([
-    {
-      id: "1",
-      value: 30,
-    },
-    {
-      id: "2",
-      value: 20,
-    },
-    {
-      id: "3",
-      value: 50,
-    },
-  ]);
+  const [bills, setBills] = useState<BillType>([]);
 
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {
@@ -47,6 +35,15 @@ export function Home() {
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
+
+    setBills([
+      ...bills,
+      {
+        ...newBill,
+        id: generateId(),
+      },
+    ]);
+    toggleShowAddModal();
   };
 
   return (

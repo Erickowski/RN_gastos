@@ -17,7 +17,7 @@ export const ControlBudget = ({ budgetValue, bills }: Props) => {
 
   useEffect(() => {
     const totalBill = bills.reduce(
-      (total, bill) => Number(bill.value) + total,
+      (total, bill) => Number(bill.amount) + total,
       0
     );
 

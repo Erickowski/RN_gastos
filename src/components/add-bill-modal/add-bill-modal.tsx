@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-import { NewBillType } from "@src/types";
+import { CATEGORIES, NewBillType } from "@src/types";
 
 import { PICKER_ITEMS } from "./constants";
 
@@ -28,7 +28,7 @@ export const AddBillModal = ({
 }: Props) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(CATEGORIES.empty);
 
   const handleSubmit = () => {
     handleAddBill({

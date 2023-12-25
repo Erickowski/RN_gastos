@@ -1,5 +1,7 @@
+import { CATEGORIES } from "@src/types";
+
 export type NewBillType = {
   name: string;
   amount: string;
-  category: string;
+  category: CATEGORIES;
 };

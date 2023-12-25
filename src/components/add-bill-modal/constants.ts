@@ -1,31 +1,33 @@
+import { CATEGORIES } from "@src/types";
+
 export const PICKER_ITEMS = [
-  { label: "-- Seleccione --", value: "" },
+  { label: "-- Seleccione --", value: CATEGORIES.empty },
   {
     label: "Ahorro",
-    value: "ahorro",
+    value: CATEGORIES.savings,
   },
   {
     label: "Comida",
-    value: "comida",
+    value: CATEGORIES.food,
   },
   {
     label: "Casa",
-    value: "casa",
+    value: CATEGORIES.house,
   },
   {
     label: "Gastos Varios",
-    value: "gastos",
+    value: CATEGORIES.spends,
   },
   {
     label: "Ocio",
-    value: "ocio",
+    value: CATEGORIES.entertainment,
   },
   {
     label: "Salud",
-    value: "salud",
+    value: CATEGORIES.health,
   },
   {
     label: "Suscripciones",
-    value: "suscripciones",
+    value: CATEGORIES.subscriptions,
   },
 ];
