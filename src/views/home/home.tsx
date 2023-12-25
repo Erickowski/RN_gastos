@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Alert, Pressable, Image } from "react-native";
 
-import { BillType } from "@src/types";
+import { BillType, NewBillType } from "@src/types";
 import {
   Header,
   NewBudget,
@@ -42,6 +42,13 @@ export function Home() {
     setShowAddModal((prevState) => !prevState);
   };
 
+  const handleAddBill = (newBill: NewBillType) => {
+    if (Object.values(newBill).includes("")) {
+      Alert.alert("Error", "Todos los campos son obligatorios");
+      return;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -61,6 +68,7 @@ export function Home() {
         <AddBillModal
           visible={showAddModal}
           toggleShowAddModal={toggleShowAddModal}
+          handleAddBill={handleAddBill}
         />
       ) : null}
 

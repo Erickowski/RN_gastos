@@ -9,18 +9,34 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-import styles from "./styles";
+import { NewBillType } from "@src/types";
+
 import { PICKER_ITEMS } from "./constants";
+
+import styles from "./styles";
 
 type Props = {
   visible: boolean;
   toggleShowAddModal: () => void;
+  handleAddBill: (newBill: NewBillType) => void;
 };
 
-export const AddBillModal = ({ visible, toggleShowAddModal }: Props) => {
+export const AddBillModal = ({
+  visible,
+  toggleShowAddModal,
+  handleAddBill,
+}: Props) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
+
+  const handleSubmit = () => {
+    handleAddBill({
+      name,
+      amount,
+      category,
+    });
+  };
 
   return (
     <Modal
@@ -71,7 +87,7 @@ export const AddBillModal = ({ visible, toggleShowAddModal }: Props) => {
             </Picker>
           </View>
 
-          <Pressable style={styles.submitButton}>
+          <Pressable style={styles.submitButton} onPress={handleSubmit}>
             <Text style={styles.submitText}>Agregar gasto</Text>
           </Pressable>
         </View>
