@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Pressable,
   Modal,
@@ -17,6 +18,10 @@ type Props = {
 };
 
 export const AddBillModal = ({ visible, toggleShowAddModal }: Props) => {
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
+
   return (
     <Modal
       visible={visible}
@@ -39,23 +44,27 @@ export const AddBillModal = ({ visible, toggleShowAddModal }: Props) => {
           <View style={styles.label}>
             <Text style={styles.labelText}>Nombre Gasto</Text>
             <TextInput
+              onChangeText={setName}
               placeholder="Nombre del gasto, ej: comida"
               style={styles.input}
+              value={name}
             />
           </View>
 
           <View style={styles.label}>
             <Text style={styles.labelText}>Cantidad Gasto</Text>
             <TextInput
+              onChangeText={setAmount}
               keyboardType="numeric"
               placeholder="Cantidad del gasto, ej: 300"
               style={styles.input}
+              value={amount}
             />
           </View>
 
           <View style={styles.label}>
             <Text style={styles.labelText}>Categoria gasto</Text>
-            <Picker>
+            <Picker selectedValue={category} onValueChange={setCategory}>
               {PICKER_ITEMS.map((item) => (
                 <Picker.Item {...item} key={item.value} />
               ))}
