@@ -4,5 +4,6 @@ export const COLORS = {
   cultured: "#F5F5F5",
   denimBlue: "#1E40AF",
   slateGray: "#64748B",
+  vividCerise: "#DB2777",
   white: "#FFF",
 };

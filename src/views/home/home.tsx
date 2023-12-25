@@ -57,7 +57,12 @@ export function Home() {
         )}
       </View>
 
-      {showAddModal ? <AddBillModal visible={showAddModal} /> : null}
+      {showAddModal ? (
+        <AddBillModal
+          visible={showAddModal}
+          toggleShowAddModal={toggleShowAddModal}
+        />
+      ) : null}
 
       {showControlBudget ? (
         <Pressable onPress={toggleShowAddModal}>

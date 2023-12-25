@@ -13,15 +13,23 @@ import { PICKER_ITEMS } from "./constants";
 
 type Props = {
   visible: boolean;
+  toggleShowAddModal: () => void;
 };
 
-export const AddBillModal = ({ visible }: Props) => {
+export const AddBillModal = ({ visible, toggleShowAddModal }: Props) => {
   return (
-    <Modal visible={visible} animationType="slide">
+    <Modal
+      visible={visible}
+      animationType="slide"
+      onRequestClose={toggleShowAddModal}
+    >
       <SafeAreaView style={styles.container}>
         <View>
-          <Pressable>
-            <Text>Cancelar</Text>
+          <Pressable
+            style={styles.cancelButton}
+            onLongPress={toggleShowAddModal}
+          >
+            <Text style={styles.cancelText}>Cancelar</Text>
           </Pressable>
         </View>
 

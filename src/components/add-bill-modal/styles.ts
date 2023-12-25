@@ -7,6 +7,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.denimBlue,
     flex: 1,
   },
+  cancelButton: {
+    backgroundColor: COLORS.vividCerise,
+    padding: 10,
+    marginTop: 30,
+    marginHorizontal: 10,
+  },
+  cancelText: {
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    color: COLORS.white,
+  },
   form: {
     ...GLOBAL_STYLES.container,
   },
