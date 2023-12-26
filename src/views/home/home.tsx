@@ -8,6 +8,7 @@ import {
   NewBudget,
   ControlBudget,
   AddBillModal,
+  BillList,
 } from "@src/components";
 
 import styles from "./styles";
@@ -60,6 +61,8 @@ export function Home() {
           />
         )}
       </View>
+
+      {showControlBudget && <BillList />}
 
       {showAddModal ? (
         <AddBillModal
