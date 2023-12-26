@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Text, View, Image } from "react-native";
 
-import { BillType } from "@src/types";
+import { BillsType } from "@src/types";
 import { formatNumber } from "@src/utils";
 
 import styles from "./styles";
 
 type Props = {
   budgetValue: string;
-  bills: BillType;
+  bills: BillsType;
 };
 
 export const ControlBudget = ({ budgetValue, bills }: Props) => {

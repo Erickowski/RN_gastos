@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 
-import { BillType } from "@src/types";
+import { BillsType } from "@src/types";
 import { Bill } from "@src/components";
 
 import styles from "./styles";
 
-type Props = { bills: BillType };
+type Props = { bills: BillsType };
 
 export const BillList = ({ bills }: Props) => {
   return (

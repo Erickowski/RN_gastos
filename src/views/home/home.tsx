@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Alert, Pressable, Image, ScrollView } from "react-native";
 
 import { generateId } from "@src/utils";
-import { BillType, NewBillType } from "@src/types";
+import { BillsType, NewBillType } from "@src/types";
 import {
   Header,
   NewBudget,
@@ -17,7 +17,7 @@ export function Home() {
   const [budget, setBudget] = useState<string>("");
   const [showControlBudget, setShowControlBudget] = useState<boolean>(false);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
-  const [bills, setBills] = useState<BillType>([]);
+  const [bills, setBills] = useState<BillsType>([]);
 
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {

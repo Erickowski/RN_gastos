@@ -1,10 +1,10 @@
 import { CATEGORIES } from "@src/types";
 
-export type Bill = {
+export type BillType = {
   id: string;
   name: string;
   amount: string;
   category: CATEGORIES;
 };
 
-export type BillType = Array<Bill>;
+export type BillsType = Array<BillType>;
