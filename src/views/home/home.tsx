@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Alert, Pressable, Image } from "react-native";
+import { View, Alert, Pressable, Image, ScrollView } from "react-native";
 
 import { generateId } from "@src/utils";
 import { BillType, NewBillType } from "@src/types";
@@ -49,20 +49,22 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Header />
-        {showControlBudget ? (
-          <ControlBudget budgetValue={budget} bills={bills} />
-        ) : (
-          <NewBudget
-            budgetValue={budget}
-            onSetBudget={setBudget}
-            onValidateBudget={handleValidateBudget}
-          />
-        )}
-      </View>
+      <ScrollView>
+        <View style={styles.header}>
+          <Header />
+          {showControlBudget ? (
+            <ControlBudget budgetValue={budget} bills={bills} />
+          ) : (
+            <NewBudget
+              budgetValue={budget}
+              onSetBudget={setBudget}
+              onValidateBudget={handleValidateBudget}
+            />
+          )}
+        </View>
 
-      {showControlBudget && <BillList bills={bills} />}
+        {showControlBudget && <BillList bills={bills} />}
+      </ScrollView>
 
       {showAddModal ? (
         <AddBillModal
