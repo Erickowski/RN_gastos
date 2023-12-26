@@ -67,9 +67,15 @@ export const BillModal = ({
       onRequestClose={handleCancel}
     >
       <SafeAreaView style={styles.container}>
-        <View>
-          <Pressable style={styles.cancelButton} onLongPress={handleCancel}>
-            <Text style={styles.cancelText}>Cancelar</Text>
+        <View style={styles.buttonContainer}>
+          <Pressable
+            style={[styles.button, styles.cancelButton]}
+            onLongPress={handleCancel}
+          >
+            <Text style={styles.buttonText}>Cancelar</Text>
+          </Pressable>
+          <Pressable style={[styles.button, styles.deleteButton]}>
+            <Text style={styles.buttonText}>Eliminar</Text>
           </Pressable>
         </View>
 

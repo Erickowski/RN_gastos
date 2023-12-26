@@ -7,13 +7,23 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.denimBlue,
     flex: 1,
   },
-  cancelButton: {
-    backgroundColor: COLORS.vividCerise,
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  button: {
     padding: 10,
     marginTop: 30,
     marginHorizontal: 10,
+    flex: 1,
   },
-  cancelText: {
+  cancelButton: {
+    backgroundColor: COLORS.vividCerise,
+  },
+  deleteButton: {
+    backgroundColor: COLORS.red,
+  },
+  buttonText: {
     textAlign: "center",
     textTransform: "uppercase",
     fontWeight: "bold",
