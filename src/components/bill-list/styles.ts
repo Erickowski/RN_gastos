@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "700",
   },
+  noBills: {
+    marginTop: 20,
+    textAlign: "center",
+    fontSize: 20,
+  },
 });
 
 export default styles;

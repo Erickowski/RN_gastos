@@ -1,6 +1,6 @@
 import { CATEGORIES } from "@src/types";
 
-type Bill = {
+export type Bill = {
   id: string;
   name: string;
   amount: string;

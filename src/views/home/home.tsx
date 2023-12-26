@@ -62,7 +62,7 @@ export function Home() {
         )}
       </View>
 
-      {showControlBudget && <BillList />}
+      {showControlBudget && <BillList bills={bills} />}
 
       {showAddModal ? (
         <AddBillModal
