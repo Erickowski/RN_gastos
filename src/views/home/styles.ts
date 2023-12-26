@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: COLORS.blueberry,
+    minHeight: 400,
   },
   image: {
     width: 60,
