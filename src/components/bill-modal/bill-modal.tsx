@@ -24,7 +24,7 @@ type Props = {
   setBill: Dispatch<SetStateAction<BillType>>;
 };
 
-export const AddBillModal = ({
+export const BillModal = ({
   bill,
   visible,
   toggleShowAddModal,
@@ -62,7 +62,9 @@ export const AddBillModal = ({
         </View>
 
         <View style={styles.form}>
-          <Text style={styles.title}>Nuevo gasto</Text>
+          <Text style={styles.title}>
+            {isSomeObjectValuesEmpty(bill) ? "Nuevo gasto" : "Editar gasto"}
+          </Text>
 
           <View style={styles.label}>
             <Text style={styles.labelText}>Nombre Gasto</Text>
@@ -96,7 +98,9 @@ export const AddBillModal = ({
 
           <Pressable style={styles.submitButton} onPress={handleSubmit}>
             <Text style={styles.submitText}>
-              {isSomeObjectValuesEmpty(bill) ? "Agregar" : "Editar"} gasto
+              {isSomeObjectValuesEmpty(bill)
+                ? "Agregar gasto"
+                : "Guardar cambios"}
             </Text>
           </Pressable>
         </View>

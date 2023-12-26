@@ -7,7 +7,7 @@ import {
   Header,
   NewBudget,
   ControlBudget,
-  AddBillModal,
+  BillModal,
   BillList,
 } from "@src/components";
 
@@ -75,7 +75,7 @@ export function Home() {
       </ScrollView>
 
       {showAddModal ? (
-        <AddBillModal
+        <BillModal
           bill={bill}
           visible={showAddModal}
           toggleShowAddModal={toggleShowAddModal}
