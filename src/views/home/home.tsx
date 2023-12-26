@@ -49,6 +49,14 @@ export function Home() {
     toggleShowAddModal();
   };
 
+  const handleEditBill = (editedBill: BillType) => {
+    const modifiedBills = bills.map((bill) =>
+      bill.id === editedBill.id ? editedBill : bill
+    );
+    setBills(modifiedBills);
+    toggleShowAddModal();
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -80,6 +88,7 @@ export function Home() {
           visible={showAddModal}
           toggleShowAddModal={toggleShowAddModal}
           handleAddBill={handleAddBill}
+          handleEditBill={handleEditBill}
           setBill={setBill}
         />
       ) : null}

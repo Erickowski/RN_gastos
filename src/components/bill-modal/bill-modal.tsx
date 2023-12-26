@@ -21,6 +21,7 @@ type Props = {
   visible: boolean;
   toggleShowAddModal: () => void;
   handleAddBill: (newBill: NewBillType) => void;
+  handleEditBill: (bill: BillType) => void;
   setBill: Dispatch<SetStateAction<BillType>>;
 };
 
@@ -29,6 +30,7 @@ export const BillModal = ({
   visible,
   toggleShowAddModal,
   handleAddBill,
+  handleEditBill,
   setBill,
 }: Props) => {
   const [name, setName] = useState(bill.name);
@@ -41,11 +43,21 @@ export const BillModal = ({
   };
 
   const handleSubmit = () => {
-    handleAddBill({
-      name,
-      amount,
-      category,
-    });
+    if (bill?.id) {
+      handleEditBill({
+        ...bill,
+        name,
+        amount,
+        category,
+      });
+      setBill(BILL_EMPTY_STATE);
+    } else {
+      handleAddBill({
+        name,
+        amount,
+        category,
+      });
+    }
   };
 
   return (
