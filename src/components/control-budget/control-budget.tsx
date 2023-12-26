@@ -23,7 +23,7 @@ export const ControlBudget = ({ budgetValue, bills }: Props) => {
 
     setAvailable(Number(budgetValue) - totalBill);
     setSpent(totalBill);
-  }, []);
+  }, [bills.length]);
 
   return (
     <View style={styles.container}>
