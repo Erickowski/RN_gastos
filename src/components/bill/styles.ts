@@ -41,6 +41,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "700",
   },
+  date: {
+    fontWeight: "700",
+    color: COLORS.vividCerise,
+  },
 });
 
 export default styles;

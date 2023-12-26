@@ -5,6 +5,7 @@ export type BillType = {
   name: string;
   amount: string;
   category: CATEGORIES;
+  date: number;
 };
 
 export type BillsType = Array<BillType>;

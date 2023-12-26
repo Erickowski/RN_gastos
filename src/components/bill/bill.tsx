@@ -1,7 +1,7 @@
 import { Image, Text, View } from "react-native";
 
 import { BillType, ICONS } from "@src/types";
-import { formatNumber } from "@src/utils";
+import { formatDate, formatNumber } from "@src/utils";
 
 import styles from "./styles";
 
@@ -10,7 +10,8 @@ type Props = {
 };
 
 export const Bill = ({ bill }: Props) => {
-  const { name, category, amount } = bill;
+  const { name, category, amount, date } = bill;
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -19,6 +20,7 @@ export const Bill = ({ bill }: Props) => {
           <View style={styles.textContainer}>
             <Text style={styles.category}>{category}</Text>
             <Text style={styles.name}>{name}</Text>
+            <Text style={styles.date}>{formatDate(date)}</Text>
           </View>
         </View>
         <Text style={styles.amount}>{formatNumber(amount)}</Text>

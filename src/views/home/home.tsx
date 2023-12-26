@@ -42,6 +42,7 @@ export function Home() {
       {
         ...newBill,
         id: generateId(),
+        date: Date.now(),
       },
     ]);
     toggleShowAddModal();
