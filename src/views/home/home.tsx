@@ -57,6 +57,25 @@ export function Home() {
     toggleShowAddModal();
   };
 
+  const handleDeleteBill = (id: string) => {
+    Alert.alert(
+      "¿Deseas eliminar este gasto?",
+      "Un gasto eliminado no se puede recuperar",
+      [
+        { text: "No", style: "cancel" },
+        {
+          text: "Si, eliminar",
+          onPress: () => {
+            const modifiedBills = bills.filter((bill) => bill.id !== id);
+            setBills(modifiedBills);
+            setBill(BILL_EMPTY_STATE);
+            toggleShowAddModal();
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -89,6 +108,7 @@ export function Home() {
           toggleShowAddModal={toggleShowAddModal}
           handleAddBill={handleAddBill}
           handleEditBill={handleEditBill}
+          handleDeleteBill={handleDeleteBill}
           setBill={setBill}
         />
       ) : null}

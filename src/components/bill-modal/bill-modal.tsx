@@ -22,6 +22,7 @@ type Props = {
   toggleShowAddModal: () => void;
   handleAddBill: (newBill: NewBillType) => void;
   handleEditBill: (bill: BillType) => void;
+  handleDeleteBill: (id: string) => void;
   setBill: Dispatch<SetStateAction<BillType>>;
 };
 
@@ -31,6 +32,7 @@ export const BillModal = ({
   toggleShowAddModal,
   handleAddBill,
   handleEditBill,
+  handleDeleteBill,
   setBill,
 }: Props) => {
   const [name, setName] = useState(bill.name);
@@ -74,7 +76,10 @@ export const BillModal = ({
           >
             <Text style={styles.buttonText}>Cancelar</Text>
           </Pressable>
-          <Pressable style={[styles.button, styles.deleteButton]}>
+          <Pressable
+            style={[styles.button, styles.deleteButton]}
+            onLongPress={() => handleDeleteBill(bill.id ?? "")}
+          >
             <Text style={styles.buttonText}>Eliminar</Text>
           </Pressable>
         </View>
