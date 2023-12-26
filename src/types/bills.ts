@@ -1,7 +1,7 @@
-import { CATEGORIES } from "@src/types";
+import { CATEGORIES } from "./categories";
 
 export type BillType = {
-  id: string;
+  id?: string;
   name: string;
   amount: string;
   category: CATEGORIES;
@@ -9,3 +9,10 @@ export type BillType = {
 };
 
 export type BillsType = Array<BillType>;
+
+export const BILL_EMPTY_STATE = {
+  name: "",
+  amount: "",
+  category: CATEGORIES.empty,
+  date: 0,
+};

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   Pressable,
   Modal,
@@ -9,26 +9,36 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-import { CATEGORIES, NewBillType } from "@src/types";
+import { NewBillType, BillType, BILL_EMPTY_STATE } from "@src/types";
+import { isSomeObjectValuesEmpty } from "@src/utils";
 
 import { PICKER_ITEMS } from "./constants";
 
 import styles from "./styles";
 
 type Props = {
+  bill: BillType;
   visible: boolean;
   toggleShowAddModal: () => void;
   handleAddBill: (newBill: NewBillType) => void;
+  setBill: Dispatch<SetStateAction<BillType>>;
 };
 
 export const AddBillModal = ({
+  bill,
   visible,
   toggleShowAddModal,
   handleAddBill,
+  setBill,
 }: Props) => {
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState(CATEGORIES.empty);
+  const [name, setName] = useState(bill.name);
+  const [amount, setAmount] = useState(bill.amount);
+  const [category, setCategory] = useState(bill.category);
+
+  const handleCancel = () => {
+    toggleShowAddModal();
+    setBill(BILL_EMPTY_STATE);
+  };
 
   const handleSubmit = () => {
     handleAddBill({
@@ -42,14 +52,11 @@ export const AddBillModal = ({
     <Modal
       visible={visible}
       animationType="slide"
-      onRequestClose={toggleShowAddModal}
+      onRequestClose={handleCancel}
     >
       <SafeAreaView style={styles.container}>
         <View>
-          <Pressable
-            style={styles.cancelButton}
-            onLongPress={toggleShowAddModal}
-          >
+          <Pressable style={styles.cancelButton} onLongPress={handleCancel}>
             <Text style={styles.cancelText}>Cancelar</Text>
           </Pressable>
         </View>
@@ -88,7 +95,9 @@ export const AddBillModal = ({
           </View>
 
           <Pressable style={styles.submitButton} onPress={handleSubmit}>
-            <Text style={styles.submitText}>Agregar gasto</Text>
+            <Text style={styles.submitText}>
+              {isSomeObjectValuesEmpty(bill) ? "Agregar" : "Editar"} gasto
+            </Text>
           </Pressable>
         </View>
       </SafeAreaView>

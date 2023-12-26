@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { View, Alert, Pressable, Image, ScrollView } from "react-native";
 
-import { generateId } from "@src/utils";
-import { BillsType, NewBillType } from "@src/types";
+import { generateId, isSomeObjectValuesEmpty } from "@src/utils";
+import { BillsType, NewBillType, BILL_EMPTY_STATE, BillType } from "@src/types";
 import {
   Header,
   NewBudget,
@@ -18,6 +18,7 @@ export function Home() {
   const [showControlBudget, setShowControlBudget] = useState<boolean>(false);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [bills, setBills] = useState<BillsType>([]);
+  const [bill, setBill] = useState<BillType>(BILL_EMPTY_STATE);
 
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {
@@ -32,7 +33,7 @@ export function Home() {
   };
 
   const handleAddBill = (newBill: NewBillType) => {
-    if (Object.values(newBill).includes("")) {
+    if (isSomeObjectValuesEmpty(newBill)) {
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
@@ -64,14 +65,22 @@ export function Home() {
           )}
         </View>
 
-        {showControlBudget && <BillList bills={bills} />}
+        {showControlBudget && (
+          <BillList
+            bills={bills}
+            toggleShowAddModal={toggleShowAddModal}
+            setBill={setBill}
+          />
+        )}
       </ScrollView>
 
       {showAddModal ? (
         <AddBillModal
+          bill={bill}
           visible={showAddModal}
           toggleShowAddModal={toggleShowAddModal}
           handleAddBill={handleAddBill}
+          setBill={setBill}
         />
       ) : null}
 
