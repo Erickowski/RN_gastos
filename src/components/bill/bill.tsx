@@ -13,15 +13,15 @@ export const Bill = ({ bill }: Props) => {
   const { name, category, amount } = bill;
   return (
     <View style={styles.container}>
-      <View>
-        <View>
-          <Image source={ICONS[bill.category]} />
-          <View>
-            <Text>{category}</Text>
-            <Text>{name}</Text>
+      <View style={styles.content}>
+        <View style={styles.imageContainer}>
+          <Image source={ICONS[bill.category]} style={styles.image} />
+          <View style={styles.textContainer}>
+            <Text style={styles.category}>{category}</Text>
+            <Text style={styles.name}>{name}</Text>
           </View>
         </View>
-        <Text>{formatNumber(amount)}</Text>
+        <Text style={styles.amount}>{formatNumber(amount)}</Text>
       </View>
     </View>
   );
