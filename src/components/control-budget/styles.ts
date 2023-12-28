@@ -23,6 +23,15 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: COLORS.blueberry,
   },
+  circularTitle: {
+    fontWeight: "700",
+    fontSize: 24,
+    color: COLORS.blueberry,
+  },
+  circularSubtitle: {
+    color: COLORS.slateGray,
+    marginTop: 5,
+  },
 });
 
 export default styles;

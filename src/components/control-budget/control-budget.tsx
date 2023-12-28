@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
-import { Text, View, Image } from "react-native";
+import { useState, useEffect, useMemo } from "react";
+import { Text, View } from "react-native";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 
 import { BillsType } from "@src/types";
-import { formatNumber } from "@src/utils";
+import { formatNumber, formatPercentage } from "@src/utils";
+import { COLORS } from "@src/styles";
 
 import styles from "./styles";
 
@@ -23,15 +25,30 @@ export const ControlBudget = ({ budgetValue, bills }: Props) => {
 
     setAvailable(Number(budgetValue) - totalBill);
     setSpent(totalBill);
-  }, [bills.length]);
+  }, [bills]);
+
+  const fillValue = useMemo(() => {
+    return Number(formatPercentage(available, Number(budgetValue)));
+  }, [available]);
 
   return (
     <View style={styles.container}>
       <View style={styles.graphCenter}>
-        <Image
-          source={require("@src/assets/img/grafico.jpg")}
-          style={styles.image}
-        />
+        <AnimatedCircularProgress
+          size={200}
+          width={15}
+          fill={fillValue}
+          tintColor={COLORS.blueberry}
+          backgroundColor={COLORS.slateGray}
+          duration={1250}
+        >
+          {(fill) => (
+            <>
+              <Text style={styles.circularTitle}>{fill.toFixed(0)} %</Text>
+              <Text style={styles.circularSubtitle}>Gastado</Text>
+            </>
+          )}
+        </AnimatedCircularProgress>
       </View>
 
       <View style={styles.textContainer}>
