@@ -7,12 +7,11 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 import { NewBillType, BillType, BILL_EMPTY_STATE } from "@src/types";
 import { isSomeObjectValuesEmpty } from "@src/utils";
 
-import { PICKER_ITEMS } from "./constants";
+import { Picker } from "../picker";
 
 import styles from "./styles";
 
@@ -114,11 +113,7 @@ export const BillModal = ({
 
           <View style={styles.label}>
             <Text style={styles.labelText}>Categoria gasto</Text>
-            <Picker selectedValue={category} onValueChange={setCategory}>
-              {PICKER_ITEMS.map((item) => (
-                <Picker.Item {...item} key={item.value} />
-              ))}
-            </Picker>
+            <Picker selectedValue={category} onValueChange={setCategory} />
           </View>
 
           <Pressable style={styles.submitButton} onPress={handleSubmit}>

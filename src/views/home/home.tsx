@@ -2,13 +2,20 @@ import { useState } from "react";
 import { View, Alert, Pressable, Image, ScrollView } from "react-native";
 
 import { generateId, isSomeObjectValuesEmpty } from "@src/utils";
-import { BillsType, NewBillType, BILL_EMPTY_STATE, BillType } from "@src/types";
+import {
+  BillsType,
+  NewBillType,
+  BILL_EMPTY_STATE,
+  BillType,
+  CATEGORIES,
+} from "@src/types";
 import {
   Header,
   NewBudget,
   ControlBudget,
   BillModal,
   BillList,
+  Filter,
 } from "@src/components";
 
 import styles from "./styles";
@@ -19,6 +26,8 @@ export function Home() {
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [bills, setBills] = useState<BillsType>([]);
   const [bill, setBill] = useState<BillType>(BILL_EMPTY_STATE);
+  const [filteredCategory, setFilteredCategory] = useState(CATEGORIES.empty);
+  const [filteredBills, setFilteredBills] = useState<BillsType>([]);
 
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {
@@ -93,11 +102,21 @@ export function Home() {
         </View>
 
         {showControlBudget && (
-          <BillList
-            bills={bills}
-            toggleShowAddModal={toggleShowAddModal}
-            setBill={setBill}
-          />
+          <>
+            <Filter
+              filteredCategory={filteredCategory}
+              setFilteredCategory={setFilteredCategory}
+              bills={bills}
+              setFilteredBills={setFilteredBills}
+            />
+            <BillList
+              bills={bills}
+              filteredBills={filteredBills}
+              filteredCategory={filteredCategory}
+              toggleShowAddModal={toggleShowAddModal}
+              setBill={setBill}
+            />
+          </>
         )}
       </ScrollView>
 

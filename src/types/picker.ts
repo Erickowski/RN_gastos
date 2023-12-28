@@ -1,4 +1,4 @@
-import { CATEGORIES } from "@src/types";
+import { CATEGORIES } from "./categories";
 
 export const PICKER_ITEMS = [
   { label: "-- Seleccione --", value: CATEGORIES.empty },
