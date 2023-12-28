@@ -76,12 +76,14 @@ export const BillModal = ({
           >
             <Text style={styles.buttonText}>Cancelar</Text>
           </Pressable>
-          <Pressable
-            style={[styles.button, styles.deleteButton]}
-            onLongPress={() => handleDeleteBill(bill.id ?? "")}
-          >
-            <Text style={styles.buttonText}>Eliminar</Text>
-          </Pressable>
+          {bill?.id && (
+            <Pressable
+              style={[styles.button, styles.deleteButton]}
+              onLongPress={() => handleDeleteBill(bill.id ?? "")}
+            >
+              <Text style={styles.buttonText}>Eliminar</Text>
+            </Pressable>
+          )}
         </View>
 
         <View style={styles.form}>
