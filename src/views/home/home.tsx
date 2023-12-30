@@ -61,6 +61,18 @@ export function Home() {
     }
   }, [showControlBudget]);
 
+  useEffect(() => {
+    const setBillsKeyStorage = async () => {
+      try {
+        await AsyncStorage.setItem(KEYS_STORAGE.bills, JSON.stringify(bills));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setBillsKeyStorage();
+  }, [bills]);
+
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {
       setShowControlBudget(true);
