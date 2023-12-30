@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Alert, Pressable, Image, ScrollView } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { generateId, isSomeObjectValuesEmpty } from "@src/utils";
 import {
@@ -8,6 +9,7 @@ import {
   BILL_EMPTY_STATE,
   BillType,
   CATEGORIES,
+  KEYS_STORAGE,
 } from "@src/types";
 import {
   Header,
@@ -28,6 +30,36 @@ export function Home() {
   const [bill, setBill] = useState<BillType>(BILL_EMPTY_STATE);
   const [filteredCategory, setFilteredCategory] = useState(CATEGORIES.empty);
   const [filteredBills, setFilteredBills] = useState<BillsType>([]);
+
+  useEffect(() => {
+    const getBudgetKeyStorage = async () => {
+      try {
+        const budget = (await AsyncStorage.getItem(KEYS_STORAGE.budget)) ?? "0";
+        if (Number(budget) > 0) {
+          setBudget(budget);
+          setShowControlBudget(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getBudgetKeyStorage();
+  }, [budget]);
+
+  useEffect(() => {
+    if (showControlBudget) {
+      const setBudgetKeyStorage = async () => {
+        try {
+          await AsyncStorage.setItem(KEYS_STORAGE.budget, budget);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      setBudgetKeyStorage();
+    }
+  }, [showControlBudget]);
 
   const handleValidateBudget = () => {
     if (Number(budget) > 0) {
