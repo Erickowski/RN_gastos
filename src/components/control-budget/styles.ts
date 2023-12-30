@@ -32,6 +32,18 @@ const styles = StyleSheet.create({
     color: COLORS.slateGray,
     marginTop: 5,
   },
+  button: {
+    backgroundColor: COLORS.vividCerise,
+    padding: 10,
+    marginBottom: 40,
+    borderRadius: 5,
+  },
+  buttonText: {
+    textAlign: "center",
+    color: COLORS.white,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
 });
 
 export default styles;

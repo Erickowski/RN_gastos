@@ -142,13 +142,41 @@ export function Home() {
     );
   };
 
+  const handleReset = () => {
+    Alert.alert(
+      "¿Deseas resetear la app?",
+      "Esto eliminara presupuesto y gastos",
+      [
+        { text: "No", style: "cancel" },
+        {
+          text: "Si, eliminar",
+          onPress: async () => {
+            try {
+              await AsyncStorage.clear();
+
+              setShowControlBudget(false);
+              setBudget("");
+              setBills([]);
+            } catch (error) {
+              console.log(error);
+            }
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <Header />
           {showControlBudget ? (
-            <ControlBudget budgetValue={budget} bills={bills} />
+            <ControlBudget
+              budgetValue={budget}
+              bills={bills}
+              onReset={handleReset}
+            />
           ) : (
             <NewBudget
               budgetValue={budget}

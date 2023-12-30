@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
 import { BillsType } from "@src/types";
@@ -11,9 +11,10 @@ import styles from "./styles";
 type Props = {
   budgetValue: string;
   bills: BillsType;
+  onReset: () => void;
 };
 
-export const ControlBudget = ({ budgetValue, bills }: Props) => {
+export const ControlBudget = ({ budgetValue, bills, onReset }: Props) => {
   const [available, setAvailable] = useState(0);
   const [spent, setSpent] = useState(0);
 
@@ -52,6 +53,9 @@ export const ControlBudget = ({ budgetValue, bills }: Props) => {
       </View>
 
       <View style={styles.textContainer}>
+        <Pressable style={styles.button} onLongPress={onReset}>
+          <Text style={styles.buttonText}>Reiniciar app</Text>
+        </Pressable>
         <Text style={styles.value}>
           <Text style={styles.label}>Presupuesto:</Text>{" "}
           {formatNumber(budgetValue)}
