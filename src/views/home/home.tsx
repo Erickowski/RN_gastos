@@ -62,6 +62,19 @@ export function Home() {
   }, [showControlBudget]);
 
   useEffect(() => {
+    const getBillsKeyStorage = async () => {
+      try {
+        const bills = await AsyncStorage.getItem(KEYS_STORAGE.bills);
+        setBills(bills ? JSON.parse(bills) : []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getBillsKeyStorage();
+  }, []);
+
+  useEffect(() => {
     const setBillsKeyStorage = async () => {
       try {
         await AsyncStorage.setItem(KEYS_STORAGE.bills, JSON.stringify(bills));
