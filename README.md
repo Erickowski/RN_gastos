@@ -24,3 +24,5 @@ Project from React Native course by https://github.com/codigoconjuan
 `npm start`
 
 ## Demo (video)
+https://github.com/Erickowski/RN_gastos/assets/40204500/22cae56b-5820-4b82-93f9-f6da5cec1948
+
